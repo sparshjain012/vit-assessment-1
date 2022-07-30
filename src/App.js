@@ -1,25 +1,35 @@
-import logo from './logo.svg';
 import './App.css';
+import Navbar from './components/Navbar';
+import bootstrap from '../node_modules/bootstrap/dist/css/bootstrap.min.css'
+import Homescreen from './screens/Homescreen';
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+} from "react-router-dom";
+import Productdescscreen from './screens/Productdescscreen';
+import Cartscreen from './screens/Cartscreen';
+import Registerscreen from './screens/Registerscreen';
+import Loginscreen from './screens/Loginscreen';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Navbar/>
+      <BrowserRouter> 
+       <Routes>
+          <Route path='/' element={<Homescreen/>}/>
+          <Route path='/product/:id' element= {<Productdescscreen/>}/>
+          <Route path='/cart' element= {<Cartscreen/>}/>
+          <Route path='/register' element= {<Registerscreen/>}/>
+          <Route path='/login' element= {<Loginscreen/>}/>
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }
 
 export default App;
+//to change routes in URL we have implemented react router dom in line 11
+// we add the id of the product in the product product.js to access them in line 19
+
